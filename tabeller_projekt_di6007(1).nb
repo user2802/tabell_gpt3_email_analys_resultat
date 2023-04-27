@@ -1,0 +1,740 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30531,        732]
+NotebookOptionsPosition[     29473,        705]
+NotebookOutlinePosition[     29891,        722]
+CellTagsIndexPosition[     29848,        719]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fileNames", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<986.eml\>\"", ",", "\"\<11..eml\>\"", ",", "\"\<1809.eml\>\"", ",", 
+     "\"\<1011.eml\>\"", ",", "\"\<1104.eml\>\"", ",", "\"\<251..eml\>\"", 
+     ",", "\"\<9..eml\>\"", ",", "\"\<144.eml\>\"", ",", "\"\<969.eml\>\"", 
+     ",", "\"\<10..eml\>\"", ",", "\"\<828.eml\>\"", ",", "\"\<980.eml\>\"", 
+     ",", "\"\<998.eml\>\"", ",", "\"\<891.eml\>\"", ",", "\"\<906.eml\>\"", 
+     ",", "\"\<6..eml\>\"", ",", "\"\<7..eml\>\"", ",", "\"\<525.eml\>\"", 
+     ",", "\"\<8..eml\>\"", ",", "\"\<1..eml\>\"", ",", "\"\<115..eml\>\"", 
+     ",", "\"\<981.eml\>\"", ",", "\"\<1018.eml\>\"", ",", "\"\<24..eml\>\"", 
+     ",", "\"\<957.eml\>\"", ",", "\"\<985.eml\>\"", ",", "\"\<1101.eml\>\"", 
+     ",", "\"\<139.eml\>\"", ",", "\"\<267..eml\>\"", ",", "\"\<72..eml\>\"", 
+     ",", "\"\<895.eml\>\"", ",", "\"\<3..eml\>\"", ",", "\"\<1019.eml\>\"", 
+     ",", "\"\<1017.eml\>\"", ",", "\"\<5..eml\>\"", ",", "\"\<907.eml\>\"", 
+     ",", "\"\<965.eml\>\"", ",", "\"\<20..eml\>\"", ",", "\"\<547.eml\>\"", 
+     ",", "\"\<29..eml\>\"", ",", "\"\<1004.eml\>\"", ",", "\"\<949.eml\>\"", 
+     ",", "\"\<93..eml\>\"", ",", "\"\<114..eml\>\"", ",", "\"\<2..eml\>\"", 
+     ",", "\"\<4..eml\>\"", ",", "\"\<106.eml\>\"", ",", "\"\<1.eml\>\"", 
+     ",", "\"\<187.eml\>\"", ",", "\"\<46.eml\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"suspect", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<9_gpt4.eml\>\"", ",", "\"\<10_gpt4.eml\>\"", ",", 
+      "\"\<6_gpt4.eml\>\"", ",", "\"\<7_gpt4.eml\>\"", ",", 
+      "\"\<8_gpt4.eml\>\"", ",", "\"\<3_gpt4.eml\>\"", ",", 
+      "\"\<5_gpt4.eml\>\"", ",", "\"\<547.eml\>\"", ",", "\"\<2_gpt4.eml\>\"",
+       ",", "\"\<4_gpt4.eml\>\"", ",", "\"\<106.eml\>\""}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nonsuspect", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<986.eml\>\"", ",", "\"\<11.eml\>\"", ",", "\"\<1809.eml\>\"", ",", 
+     "\"\<1011.eml\>\"", ",", "\"\<1104.eml\>\"", ",", "\"\<251.eml\>\"", 
+     ",", "\"\<144.eml\>\"", ",", "\"\<969.eml\>\"", ",", "\"\<10.eml\>\"", 
+     ",", "\"\<828.eml\>\"", ",", "\"\<980.eml\>\"", ",", "\"\<998.eml\>\"", 
+     ",", "\"\<891.eml\>\"", ",", "\"\<906.eml\>\"", ",", "\"\<525.eml\>\"", 
+     ",", "\"\<1.eml\>\"", ",", "\"\<115.eml\>\"", ",", "\"\<981.eml\>\"", 
+     ",", "\"\<1018.eml\>\"", ",", "\"\<24.eml\>\"", ",", "\"\<957.eml\>\"", 
+     ",", "\"\<985.eml\>\"", ",", "\"\<1101.eml\>\"", ",", "\"\<139.eml\>\"", 
+     ",", "\"\<267.eml\>\"", ",", "\"\<72.eml\>\"", ",", "\"\<895.eml\>\"", 
+     ",", "\"\<1019.eml\>\"", ",", "\"\<1017.eml\>\"", ",", "\"\<907.eml\>\"",
+      ",", "\"\<965.eml\>\"", ",", "\"\<20.eml\>\"", ",", "\"\<29.eml\>\"", 
+     ",", "\"\<1004.eml\>\"", ",", "\"\<949.eml\>\"", ",", "\"\<93.eml\>\"", 
+     ",", "\"\<114.eml\>\"", ",", "\"\<1_gpt4.eml\>\"", ",", 
+     "\"\<187.eml\>\"", ",", "\"\<46.eml\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r0", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<986.eml\>\"", ",", "\"\<11.eml\>\"", ",", "\"\<2_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<1809.eml\>\"", ",", "\"\<1011.eml\>\"", ",", "\"\<3_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r2", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<251.eml\>\"", ",", "\"\<144.eml\>\"", ",", "\"\<4_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r3", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<969.eml\>\"", ",", "\"\<10.eml\>\"", ",", "\"\<5_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r4", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<980.eml\>\"", ",", "\"\<998.eml\>\"", ",", "\"\<6_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r5", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<891.eml\>\"", ",", "\"\<906.eml\>\"", ",", "\"\<7_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r6", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<525.eml\>\"", ",", "\"\<1.eml\>\"", ",", "\"\<8_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r7", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<115.eml\>\"", ",", "\"\<981.eml\>\"", ",", "\"\<9_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r8", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<1018.eml\>\"", ",", "\"\<24.eml\>\"", ",", "\"\<10_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r9", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<957.eml\>\"", ",", "\"\<1101.eml\>\"", ",", "\"\<547.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r10", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<139.eml\>\"", ",", "\"\<267.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r11", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1104.eml\>\"", ",", "\"\<828.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r12", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<985.eml\>\"", ",", "\"\<72.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r13", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<895.eml\>\"", ",", "\"\<1019.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r14", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1017.eml\>\"", ",", "\"\<907.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r15", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<965.eml\>\"", ",", "\"\<20.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r16", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<949.eml\>\"", ",", "\"\<93.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r17", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<114.eml\>\"", ",", "\"\<1_gpt4.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r18", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<187.eml\>\"", ",", "\"\<46.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r19", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<106.eml\>\"", ",", "\"\< \>\"", ",", "\"\< \>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\"\<GPT-3 kategorisering\>\"", ",", " ", "SpanFromLeft"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Icke-suspekt inneh\[ARing]ll\>\"", ",", "SpanFromLeft", ",", 
+       "\"\<Suspekt inneh\[ARing]ll\>\""}], "}"}], ",", " ", 
+     "\[IndentingNewLine]", "r0", ",", "r1", ",", "r2", ",", "r3", ",", "r4", 
+     ",", "r5", ",", "r6", ",", "r7", ",", "r8", ",", "r9", ",", "r10", ",", 
+     "r11", ",", "r12", ",", "r13", ",", "r14", ",", "r15", ",", "r16", ",", 
+     "r17", ",", "r18", ",", "r19", " ", ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<N=50\>\"", ",", " ", "SpanFromLeft"}], "}"}]}], "}"}], ",",
+    " ", 
+   RowBox[{"Frame", "->", " ", "All"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8915796421380672`*^9, 3.891580073217141*^9}, {
+  3.8915801146452208`*^9, 3.891580144649228*^9}, {3.89158022733665*^9, 
+  3.891580246077474*^9}, {3.891580320936556*^9, 3.89158076353406*^9}, {
+  3.891580806260766*^9, 3.891580806539793*^9}, {3.891580850619615*^9, 
+  3.8915808753795*^9}, {3.891580917106001*^9, 3.891580966152367*^9}, {
+  3.89158100819139*^9, 3.8915810971576443`*^9}, {3.8915811328207493`*^9, 
+  3.891581225634467*^9}, {3.891581273098246*^9, 3.8915812790650063`*^9}, {
+  3.8915814485844603`*^9, 3.891581472036549*^9}, {3.891589629600868*^9, 
+  3.8915896505675297`*^9}, {3.891589705401163*^9, 3.8915897594642677`*^9}, {
+  3.891592021678611*^9, 3.89159204398446*^9}, {3.891592226254743*^9, 
+  3.891592229773765*^9}, {3.891593377330379*^9, 3.891593426194828*^9}, {
+  3.891593568162798*^9, 3.891593644417694*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9838887b-4f61-4a15-85eb-4f4141f67f76"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"GPT-3 kategorisering\"\>", "\[SpanFromLeft]", "\[SpanFromLeft]"},
+    {"\<\"Icke-suspekt inneh\[ARing]ll\"\>", 
+     "\[SpanFromLeft]", "\<\"Suspekt inneh\[ARing]ll\"\>"},
+    {"\<\"986.eml\"\>", "\<\"11.eml\"\>", "\<\"2_gpt4.eml\"\>"},
+    {"\<\"1809.eml\"\>", "\<\"1011.eml\"\>", "\<\"3_gpt4.eml\"\>"},
+    {"\<\"251.eml\"\>", "\<\"144.eml\"\>", "\<\"4_gpt4.eml\"\>"},
+    {"\<\"969.eml\"\>", "\<\"10.eml\"\>", "\<\"5_gpt4.eml\"\>"},
+    {"\<\"980.eml\"\>", "\<\"998.eml\"\>", "\<\"6_gpt4.eml\"\>"},
+    {"\<\"891.eml\"\>", "\<\"906.eml\"\>", "\<\"7_gpt4.eml\"\>"},
+    {"\<\"525.eml\"\>", "\<\"1.eml\"\>", "\<\"8_gpt4.eml\"\>"},
+    {"\<\"115.eml\"\>", "\<\"981.eml\"\>", "\<\"9_gpt4.eml\"\>"},
+    {"\<\"1018.eml\"\>", "\<\"24.eml\"\>", "\<\"10_gpt4.eml\"\>"},
+    {"\<\"957.eml\"\>", "\<\"1101.eml\"\>", "\<\"547.eml\"\>"},
+    {"\<\"139.eml\"\>", "\<\"267.eml\"\>", "\<\" \"\>"},
+    {"\<\"1104.eml\"\>", "\<\"828.eml\"\>", "\<\" \"\>"},
+    {"\<\"985.eml\"\>", "\<\"72.eml\"\>", "\<\" \"\>"},
+    {"\<\"895.eml\"\>", "\<\"1019.eml\"\>", "\<\" \"\>"},
+    {"\<\"1017.eml\"\>", "\<\"907.eml\"\>", "\<\" \"\>"},
+    {"\<\"965.eml\"\>", "\<\"20.eml\"\>", "\<\" \"\>"},
+    {"\<\"949.eml\"\>", "\<\"93.eml\"\>", "\<\" \"\>"},
+    {"\<\"114.eml\"\>", "\<\"1_gpt4.eml\"\>", "\<\" \"\>"},
+    {"\<\"187.eml\"\>", "\<\"46.eml\"\>", "\<\" \"\>"},
+    {"\<\"106.eml\"\>", "\<\" \"\>", "\<\" \"\>"},
+    {"\<\"N=50\"\>", "\[SpanFromLeft]", "\[SpanFromLeft]"}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.891593397835288*^9, 3.8915934285820913`*^9}, 
+   3.8915936498680153`*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"4205e3c7-6728-4a6f-a65e-1a9ce6925497"]
+}, Open  ]],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"GPT-3 kategorisering\"\>", "\[SpanFromLeft]", "\[SpanFromLeft]"},
+     {"\<\"Icke-suspekt inneh\[ARing]ll\"\>", 
+      "\[SpanFromLeft]", "\<\"Suspekt inneh\[ARing]ll\"\>"},
+     {"\<\"986.eml\"\>", "\<\"11.eml\"\>", "\<\"9_gpt4.eml\"\>"},
+     {"\<\"1809.eml\"\>", "\<\"1011.eml\"\>", "\<\"10_gpt4.eml\"\>"},
+     {"\<\"251.eml\"\>", "\<\"144.eml\"\>", "\<\"6_gpt4.eml\"\>"},
+     {"\<\"969.eml\"\>", "\<\"10.eml\"\>", "\<\"7_gpt4.eml\"\>"},
+     {"\<\"980.eml\"\>", "\<\"998.eml\"\>", "\<\"8_gpt4.eml\"\>"},
+     {"\<\"891.eml\"\>", "\<\"906.eml\"\>", "\<\"3_gpt4.eml\"\>"},
+     {"\<\"525.eml\"\>", "\<\"1.eml\"\>", "\<\"5_gpt4.eml\"\>"},
+     {"\<\"115.eml\"\>", "\<\"981.eml\"\>", "\<\"547.eml\"\>"},
+     {"\<\"1018.eml\"\>", "\<\"24.eml\"\>", "\<\"2_gpt4.eml\"\>"},
+     {"\<\"957.eml\"\>", "\<\"1101.eml\"\>", "\<\"4_gpt4.eml\"\>"},
+     {"\<\"139.eml\"\>", "\<\"267.eml\"\>", "\<\"106.eml\"\>"},
+     {"\<\"1104.eml\"\>", "\<\"828.eml\"\>", "\<\" \"\>"},
+     {"\<\"985.eml\"\>", "\<\"72.eml\"\>", "\<\" \"\>"},
+     {"\<\"895.eml\"\>", "\<\"1019.eml\"\>", "\<\" \"\>"},
+     {"\<\"1017.eml\"\>", "\<\"907.eml\"\>", "\<\" \"\>"},
+     {"\<\"965.eml\"\>", "\<\"20.eml\"\>", "\<\" \"\>"},
+     {"\<\"949.eml\"\>", "\<\"93.eml\"\>", "\<\" \"\>"},
+     {"\<\"114.eml\"\>", "\<\"1_gpt4.eml\"\>", "\<\" \"\>"},
+     {"\<\"187.eml\"\>", "\<\"46.eml\"\>", "\<\" \"\>"},
+     {"\<\"N=50\"\>", "\[SpanFromLeft]", "\[SpanFromLeft]"}
+    },
+    AutoDelete->False,
+    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Grid"], "Output"]], "Input",
+ CellChangeTimes->{
+  3.8915899063364067`*^9},ExpressionUUID->"5a47f0f2-e713-4c69-b092-\
+9cee36cc8460"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"r0", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<986.eml\>\"", ",", "\"\<11.eml\>\"", ",", "\"\<1_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<1809.eml\>\"", ",", "\"\<1011.eml\>\"", ",", "\"\<2_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r2", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<251.eml\>\"", ",", "\"\<144.eml\>\"", ",", "\"\<3_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r3", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<969.eml\>\"", ",", "\"\<10.eml\>\"", ",", "\"\<4_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r4", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<980.eml\>\"", ",", "\"\<998.eml\>\"", ",", "\"\<5_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r5", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<891.eml\>\"", ",", "\"\<906.eml\>\"", ",", "\"\<6_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r6", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<525.eml\>\"", ",", "\"\<1.eml\>\"", ",", "\"\<7_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r7", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<115.eml\>\"", ",", "\"\<981.eml\>\"", ",", "\"\<8_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r8", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<1018.eml\>\"", ",", "\"\<24.eml\>\"", ",", "\"\<9_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r9", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<957.eml\>\"", ",", "\"\<1101.eml\>\"", ",", "\"\<10_gpt4.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r10", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<139.eml\>\"", ",", "\"\<267.eml\>\"", ",", "\"\<547.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r11", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<1104.eml\>\"", ",", "\"\<828.eml\>\"", ",", "\"\<1017.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r12", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<985.eml\>\"", ",", "\"\<72.eml\>\"", ",", "\"\<1019.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r13", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<895.eml\>\"", ",", "\"\<907.eml\>\"", ",", "\"\<949.eml\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r14", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<965.eml\>\"", ",", "\"\<20.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r15", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<114.eml\>\"", ",", "\"\<93.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r16", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<187.eml\>\"", ",", "\"\<46.eml\>\"", ",", "\"\< \>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<F\[ODoubleDot]rfattarnas kategorisering\>\"", ",", " ", 
+       "SpanFromLeft"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Icke-suspekt inneh\[ARing]ll\>\"", ",", "SpanFromLeft", ",", 
+       "\"\<Suspekt inneh\[ARing]ll\>\""}], "}"}], ",", " ", 
+     "\[IndentingNewLine]", "r0", ",", "r1", ",", "r2", ",", "r3", ",", "r4", 
+     ",", "r5", ",", "r6", ",", "r7", ",", "r8", ",", "r9", ",", "r10", ",", 
+     "r11", ",", "r12", ",", "r13", ",", "r14", ",", "r15", ",", "r16", ",", 
+     " ", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<N=50\>\"", ",", " ", "SpanFromLeft"}], "}"}]}], "}"}], ",",
+    " ", 
+   RowBox[{"Frame", "->", " ", "All"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8915900409486217`*^9, 3.891590052380088*^9}, {
+  3.891592265217613*^9, 3.891592294994479*^9}, {3.891592436544586*^9, 
+  3.891592513238669*^9}, {3.8915925819248877`*^9, 3.891592655577889*^9}, {
+  3.8915927132657833`*^9, 3.891592755066135*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"c8989340-c021-4155-b3cb-3d0b9d5fb51e"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"F\[ODoubleDot]rfattarnas kategorisering\"\>", "\[SpanFromLeft]", 
+     "\[SpanFromLeft]"},
+    {"\<\"Icke-suspekt inneh\[ARing]ll\"\>", 
+     "\[SpanFromLeft]", "\<\"Suspekt inneh\[ARing]ll\"\>"},
+    {"\<\"986.eml\"\>", "\<\"11.eml\"\>", "\<\"1_gpt4.eml\"\>"},
+    {"\<\"1809.eml\"\>", "\<\"1011.eml\"\>", "\<\"2_gpt4.eml\"\>"},
+    {"\<\"251.eml\"\>", "\<\"144.eml\"\>", "\<\"3_gpt4.eml\"\>"},
+    {"\<\"969.eml\"\>", "\<\"10.eml\"\>", "\<\"4_gpt4.eml\"\>"},
+    {"\<\"980.eml\"\>", "\<\"998.eml\"\>", "\<\"5_gpt4.eml\"\>"},
+    {"\<\"891.eml\"\>", "\<\"906.eml\"\>", "\<\"6_gpt4.eml\"\>"},
+    {"\<\"525.eml\"\>", "\<\"1.eml\"\>", "\<\"7_gpt4.eml\"\>"},
+    {"\<\"115.eml\"\>", "\<\"981.eml\"\>", "\<\"8_gpt4.eml\"\>"},
+    {"\<\"1018.eml\"\>", "\<\"24.eml\"\>", "\<\"9_gpt4.eml\"\>"},
+    {"\<\"957.eml\"\>", "\<\"1101.eml\"\>", "\<\"10_gpt4.eml\"\>"},
+    {"\<\"139.eml\"\>", "\<\"267.eml\"\>", "\<\"547.eml\"\>"},
+    {"\<\"1104.eml\"\>", "\<\"828.eml\"\>", "\<\"1017.eml\"\>"},
+    {"\<\"985.eml\"\>", "\<\"72.eml\"\>", "\<\"1019.eml\"\>"},
+    {"\<\"895.eml\"\>", "\<\"907.eml\"\>", "\<\"949.eml\"\>"},
+    {"\<\"965.eml\"\>", "\<\"20.eml\"\>", "\<\" \"\>"},
+    {"\<\"114.eml\"\>", "\<\"93.eml\"\>", "\<\" \"\>"},
+    {"\<\"187.eml\"\>", "\<\"46.eml\"\>", "\<\" \"\>"},
+    {"\<\"N=50\"\>", "\[SpanFromLeft]", "\[SpanFromLeft]"}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.891592795014076*^9},
+ CellLabel->"Out[57]=",ExpressionUUID->"f9ef38fe-15e7-4ae6-bb3e-33eef528cf76"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "90"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"labels", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Fel\>\"", ",", "\"\<R\[ADoubleDot]tt\>\""}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{"PieChart", "[", 
+  RowBox[{"data", ",", 
+   RowBox[{"ChartLabels", "->", 
+    RowBox[{"Placed", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"labels", ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<10%\>\"", ",", "\"\<90%\>\""}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<RadialCenter\>\"", ",", "\"\<RadialCallout\>\""}], 
+       "}"}]}], "]"}]}], ",", 
+   RowBox[{"PlotLabel", "->", "\"\<GPT-3 kategorisering, andelar\>\""}], ",", 
+   
+   RowBox[{"LabelStyle", "->", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"FontSize", "->", "18"}], ",", "Black"}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8915941956532507`*^9, 3.891594198019665*^9}, {
+  3.891594228141561*^9, 3.8915942738985367`*^9}, {3.891594381966996*^9, 
+  3.8915944756703873`*^9}, {3.8915946247908363`*^9, 
+  3.89159463442768*^9}},ExpressionUUID->"4fcdcf0a-e910-455e-839e-\
+a11d0acf9907"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   DynamicModuleBox[{DynamicChart`click$9504$9547 = False, 
+    DynamicChart`click$9512$9547 = False}, {
+     {RGBColor[0.5, 0.5, 1.], EdgeForm[{GrayLevel[0], Opacity[0.5]}], {{{}, {
+         {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{GrayLevel[0], 
+          Opacity[0.5]}], 
+          TagBox[GeometricTransformationBox[
+            TagBox[
+             TagBox[
+              TooltipBox[
+               TagBox[{{
+                  TagBox[
+                   DynamicBox[{
+                    FEPrivate`If[
+                    CurrentValue["MouseOver"], 
+                    EdgeForm[{
+                    GrayLevel[0.5], 
+                    AbsoluteThickness[2.5], 
+                    Opacity[0.66]}], {}, {}], 
+                    
+                    DiskBox[{0, 0}, 1., {2.5132741228718345`, 
+                    3.141592653589793}]},
+                    
+                    ImageSizeCache->{{54.24732489916535, 
+                    163.4142135623731}, {-53.918393006151206`, 
+                    11.414213562373092`}}],
+                   "DelayedMouseEffectStyle"], {}}, {}},
+                StatusArea[#, 10]& ,
+                TagBoxNote->"10"],
+               StyleBox["10", {FontSize -> 18, 
+                 GrayLevel[0]}, StripOnInput -> False]],
+              Annotation[#, 
+               Style[10, {FontSize -> 18, 
+                 GrayLevel[0]}], "Tooltip"]& ],
+             
+             EventHandlerTag[{
+              "MouseClicked" :> FEPrivate`Set[DynamicChart`click$9504$9547, 
+                 FEPrivate`Not[DynamicChart`click$9504$9547]], PassEventsDown -> 
+               True, Method -> "Preemptive", PassEventsUp -> True}]], Dynamic[
+            FEPrivate`If[
+             DynamicChart`click$9504$9547, {{{1., 0.}, {0., 
+               1.}}, {-0.1902113032590307, 0.06180339887498951}}, {{1, 0}, {0,
+               1}}, {{1, 0}, {0, 1}}], 
+             TrackedSymbols :> {DynamicChart`click$9504$9547}]],
+           "DelayedClickEffect"]}, 
+         {RGBColor[0.4992, 0.5552, 0.8309304], EdgeForm[{GrayLevel[0], 
+          Opacity[0.5]}], 
+          TagBox[GeometricTransformationBox[
+            TagBox[
+             TagBox[
+              TooltipBox[
+               TagBox[{{
+                  TagBox[
+                   DynamicBox[{
+                    FEPrivate`If[
+                    CurrentValue["MouseOver"], 
+                    EdgeForm[{
+                    GrayLevel[0.5], 
+                    AbsoluteThickness[2.5], 
+                    Opacity[0.66]}], {}, {}], 
+                    
+                    DiskBox[{0, 0}, 1., {-3.141592653589793, 
+                    2.5132741228718345`}]},
+                    
+                    ImageSizeCache->{{54.24732489916535, 
+                    269.75267510083467`}, {-97.75267510083467, 
+                    117.75267510083464`}}],
+                   "DelayedMouseEffectStyle"], {}}, {}},
+                StatusArea[#, 90]& ,
+                TagBoxNote->"90"],
+               StyleBox["90", {FontSize -> 18, 
+                 GrayLevel[0]}, StripOnInput -> False]],
+              Annotation[#, 
+               Style[90, {FontSize -> 18, 
+                 GrayLevel[0]}], "Tooltip"]& ],
+             
+             EventHandlerTag[{
+              "MouseClicked" :> FEPrivate`Set[DynamicChart`click$9512$9547, 
+                 FEPrivate`Not[DynamicChart`click$9512$9547]], PassEventsDown -> 
+               True, Method -> "Preemptive", PassEventsUp -> True}]], Dynamic[
+            FEPrivate`If[
+             DynamicChart`click$9512$9547, {{{1., 0.}, {0., 1.}}, {
+               0.1902113032590307, -0.06180339887498948}}, {{1, 0}, {0, 
+              1}}, {{1, 0}, {0, 1}}], 
+             TrackedSymbols :> {DynamicChart`click$9512$9547}]],
+           "DelayedClickEffect"]}}}, {}}, {}}, {{{
+        TagBox[GeometricTransformationBox[
+          TagBox[
+           TagBox[
+            TooltipBox[
+             TagBox[{{}, {{{}, InsetBox[
+                  StyleBox["\<\"Fel\"\>",
+                   StripOnInput->False,
+                   LineColor->GrayLevel[0],
+                   FrontFaceColor->GrayLevel[0],
+                   BackFaceColor->GrayLevel[0],
+                   GraphicsColor->GrayLevel[0],
+                   FontSize->18,
+                   
+                   FontColor->GrayLevel[
+                    0]], {-0.6340376775301023, 0.20601132958329832}]}, {
+                 {GrayLevel[0], Thickness[0.002], Opacity[1], 
+                  
+                  StyleBox[{
+                    LineBox[{{-0.9510565162951535, 
+                    0.3090169943749475}, {-1.0461621679246689`, 
+                    0.3399186938124423}}], 
+                    LineBox[{{-1.0461621679246689`, 
+                    0.3399186938124423}, {-1.146162167924669, 
+                    0.3399186938124423}}]},
+                   FontSize->18]}, 
+                 {GrayLevel[0], Opacity[1], 
+                  
+                  StyleBox[
+                   DiskBox[{-0.9510565162951535, 0.3090169943749475}, 
+                    0.016666666666666666],
+                   FontSize->18]}, InsetBox[
+                  StyleBox["\<\"10%\"\>",
+                   StripOnInput->False,
+                   LineColor->GrayLevel[0],
+                   FrontFaceColor->GrayLevel[0],
+                   BackFaceColor->GrayLevel[0],
+                   GraphicsColor->GrayLevel[0],
+                   FontSize->18,
+                   FontColor->GrayLevel[0]], {-1.1842044285764752, 0.3399186938124423},
+                   NCache[
+                  ImageScaled[{1, Rational[1, 2]}], ImageScaled[{1, 0.5}]]]}}},
+              StatusArea[#, 10]& ,
+              TagBoxNote->"10"],
+             StyleBox["10", {FontSize -> 18, 
+               GrayLevel[0]}, StripOnInput -> False]],
+            Annotation[#, 
+             Style[10, {FontSize -> 18, 
+               GrayLevel[0]}], "Tooltip"]& ],
+           
+           EventHandlerTag[{
+            "MouseClicked" :> FEPrivate`Set[DynamicChart`click$9504$9547, 
+               FEPrivate`Not[DynamicChart`click$9504$9547]], PassEventsDown -> 
+             True, Method -> "Preemptive", PassEventsUp -> True}]], Dynamic[
+          FEPrivate`If[
+           DynamicChart`click$9504$9547, {{{1., 0.}, {0., 
+             1.}}, {-0.1902113032590307, 0.06180339887498951}}, {{1, 0}, {0, 
+            1}}, {{1, 0}, {0, 1}}], 
+           TrackedSymbols :> {DynamicChart`click$9504$9547}]],
+         "DelayedClickEffect"], 
+        TagBox[GeometricTransformationBox[
+          TagBox[
+           TagBox[
+            TooltipBox[
+             TagBox[{{}, {{{}, InsetBox[
+                  StyleBox["\<\"R\[ADoubleDot]tt\"\>",
+                   StripOnInput->False,
+                   LineColor->GrayLevel[0],
+                   FrontFaceColor->GrayLevel[0],
+                   BackFaceColor->GrayLevel[0],
+                   GraphicsColor->GrayLevel[0],
+                   FontSize->18,
+                   
+                   FontColor->GrayLevel[
+                    0]], {0.6340376775301023, -0.20601132958329826}]}, {
+                 {GrayLevel[0], Thickness[0.002], Opacity[1], 
+                  
+                  StyleBox[{
+                    LineBox[{{0.9510565162951535, -0.3090169943749474}, {
+                    1.0461621679246689`, -0.33991869381244216`}}], 
+                    LineBox[{{1.0461621679246689`, -0.33991869381244216`}, {
+                    1.146162167924669, -0.33991869381244216`}}]},
+                   FontSize->18]}, 
+                 {GrayLevel[0], Opacity[1], 
+                  
+                  StyleBox[
+                   DiskBox[{0.9510565162951535, -0.3090169943749474}, 
+                    0.016666666666666666],
+                   FontSize->18]}, InsetBox[
+                  StyleBox["\<\"90%\"\>",
+                   StripOnInput->False,
+                   LineColor->GrayLevel[0],
+                   FrontFaceColor->GrayLevel[0],
+                   BackFaceColor->GrayLevel[0],
+                   GraphicsColor->GrayLevel[0],
+                   FontSize->18,
+                   FontColor->GrayLevel[0]], {1.1842044285764752, -0.33991869381244216},
+                   NCache[
+                  ImageScaled[{0, Rational[1, 2]}], ImageScaled[{0, 0.5}]]]}}},
+              StatusArea[#, 90]& ,
+              TagBoxNote->"90"],
+             StyleBox["90", {FontSize -> 18, 
+               GrayLevel[0]}, StripOnInput -> False]],
+            Annotation[#, 
+             Style[90, {FontSize -> 18, 
+               GrayLevel[0]}], "Tooltip"]& ],
+           
+           EventHandlerTag[{
+            "MouseClicked" :> FEPrivate`Set[DynamicChart`click$9512$9547, 
+               FEPrivate`Not[DynamicChart`click$9512$9547]], PassEventsDown -> 
+             True, Method -> "Preemptive", PassEventsUp -> True}]], Dynamic[
+          FEPrivate`If[
+           DynamicChart`click$9512$9547, {{{1., 0.}, {0., 1.}}, {
+             0.1902113032590307, -0.06180339887498948}}, {{1, 0}, {0, 1}}, {{
+            1, 0}, {0, 1}}], 
+           TrackedSymbols :> {DynamicChart`click$9512$9547}]],
+         "DelayedClickEffect"]}, {}}, {}}, {}, {}},
+    DynamicModuleValues:>{}], {{}, {}}, {{{}, {}, {}, {}}, {}}},
+  ContentSelectable->False,
+  DisplayFunction->Identity,
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{FontSize -> 18, 
+    GrayLevel[0]},
+  PlotLabel->FormBox["\"GPT-3 kategorisering, andelar\"", TraditionalForm],
+  PlotRange->{{-1.3, 1.3}, {-1.3, 1.3}},
+  PlotRangePadding->Scaled[0.07333333333333333]]], "Output",
+ CellChangeTimes->{{3.891594190599082*^9, 3.89159424818342*^9}, 
+   3.891594311027747*^9, 3.8915944787777452`*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"b1f438b8-41c6-47b4-8caa-76f09f415c24"]
+}, Open  ]]
+},
+WindowSize->{480, 552},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+Magnification:>0.9 Inherited,
+FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d4457326-bc3a-4863-bb68-8548258ea2d1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 8310, 194, 1111, "Input",ExpressionUUID->"9838887b-4f61-4a15-85eb-4f4141f67f76"],
+Cell[8893, 218, 1858, 33, 492, "Output",ExpressionUUID->"4205e3c7-6728-4a6f-a65e-1a9ce6925497"]
+}, Open  ]],
+Cell[10766, 254, 1792, 33, 429, "Input",ExpressionUUID->"5a47f0f2-e713-4c69-b092-9cee36cc8460"],
+Cell[CellGroupData[{
+Cell[12583, 291, 4231, 124, 476, "Input",ExpressionUUID->"c8989340-c021-4155-b3cb-3d0b9d5fb51e"],
+Cell[16817, 417, 1688, 30, 384, "Output",ExpressionUUID->"f9ef38fe-15e7-4ae6-bb3e-33eef528cf76"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18542, 452, 1187, 33, 153, "Input",ExpressionUUID->"4fcdcf0a-e910-455e-839e-a11d0acf9907"],
+Cell[19732, 487, 9725, 215, 363, "Output",ExpressionUUID->"b1f438b8-41c6-47b4-8caa-76f09f415c24"]
+}, Open  ]]
+}
+]
+*)
+
